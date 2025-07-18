@@ -1,0 +1,160 @@
+####################################      Sistema de Gerenciamento de Tarefas Inteligente (com IA/ML)     ###############################################
+
+
+##Primeira Ideia
+
+Sistema de gerenciador de tarefas (como colocaria o AI?)
+
+
+A ideia: Em vez de um simples to-do list, crie um que use inteligência artificial para categorizar tarefas,
+sugerir prazos baseados em sua rotina ou até mesmo priorizar automaticamente.
+
+
+
+//// Itens necessários:
+
+    Tarefa-
+
+        Tarefa(
+            --Int Id;
+            --String Nome;
+            --String/Boolean Status;*
+            --String Prioridade;
+        )
+                ---Criar uma tarefa.
+                ---Visualizar uma tarefa.
+                ---Editar tarefa.
+                ---Excluir tarefa.
+                ---Colocar senha na tarefa.
+
+///não precisa de uma classe só para o statues porque ele pode ser referenciado na tarefa por um Enum - Boolean Realizado/Não Realizado
+    Status-
+
+        Status(
+           --Int Id;
+           --Boolean/String Realizada;
+           --Boolean/String NaoRealizado;
+
+        )
+                ---Realizada.
+                ---Não realizada.
+
+    Tags-
+
+        Tags(
+            --Int Id;
+            --String Trabalho.
+            --String Pessoal.
+            --String Estudos.
+            --String Compras.
+            --String Livre.
+        )
+                ---Trabalho.
+                ---Pessoal.
+                ---Estudos.
+                ---Compras.
+                ---Livre para criar.
+
+    Prioridade-
+
+        Prioridade(
+             --String Alta.
+             --String Média.
+             --String Baixa.
+        )
+                ---Alta.
+                ---Média.
+                ---Baixa.
+
+
+
+//////
+
+
+
+-- Criando a tabela de Tarefas
+CREATE TABLE tarefa (
+    id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY, -- BIGINT corresponde ao Long em Java. IDENTITY é para autoincremento.
+    nome VARCHAR(255) NOT NULL,
+    prioridade VARCHAR(50) NOT NULL, -- Para armazenar o Enum como String: 'ALTA', 'MEDIA', 'BAIXA'
+    status VARCHAR(50) NOT NULL,     -- Para armazenar 'PENDENTE','CONCLUIDA'
+    data_criacao TIMESTAMP,
+    data_conclusao TIMESTAMP,
+
+    -- Adicionando verificações (constraints) para garantir a integridade dos dados do Enum
+    CONSTRAINT chk_prioridade CHECK (prioridade IN ('ALTA', 'MEDIA', 'BAIXA')),
+    CONSTRAINT chk_status CHECK (status IN ('PENDENTE','CONCLUIDA'))
+);
+
+-- Criando a tabela de Tags
+CREATE TABLE tag (
+    id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    nome VARCHAR(100) NOT NULL UNIQUE -- É uma boa prática garantir que os nomes das tags sejam únicos
+);
+
+-- Criando a Tabela de Junção para o relacionamento Muitos-para-Muitos
+-- Esta tabela resolve a relação entre Tarefa e Tag
+CREATE TABLE tarefa_tag (
+    tarefa_id BIGINT NOT NULL,
+    tag_id BIGINT NOT NULL,
+
+    -- Definindo a chave primária composta para garantir que um par tarefa-tag seja único
+    PRIMARY KEY (tarefa_id, tag_id),
+
+    -- Definindo as chaves estrangeiras que ligam esta tabela às outras duas
+    CONSTRAINT fk_tarefa
+        FOREIGN KEY(tarefa_id)
+        REFERENCES tarefa(id)
+        ON DELETE CASCADE, -- Se uma tarefa for deletada, a relação aqui também é deletada
+
+    CONSTRAINT fk_tag
+        FOREIGN KEY(tag_id)
+        REFERENCES tag(id)
+        ON DELETE CASCADE -- Se uma tag for deletada, a relação aqui também é deletada
+);
+
+
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
