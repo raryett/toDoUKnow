@@ -82,7 +82,7 @@ CREATE TABLE tarefa (
     data_conclusao TIMESTAMP,
 
     -- Adicionando verificações (constraints) para garantir a integridade dos dados do Enum
-    CONSTRAINT chk_prioridade CHECK (prioridade IN ('ALTA', 'MEDIA', 'BAIXA')),
+    CONSTRAINT chk_prioridade CHECK (prioridade IN ()),
     CONSTRAINT chk_status CHECK (status IN ('PENDENTE','CONCLUIDA'))
 );
 

@@ -1,4 +1,10 @@
-# 🚀 TO DO U KNOW 
+**# 🚀 TO DO U KNOW** 
 
-##This is a simple project of a TO DO LIST 
-where you can manage to do all your taks during the day 
+__This is a simple project of a TO DO LIST__
+where you can manage to do all your taks during the day.
+
+
+With a simple mark you can risck it.
+
+
+
