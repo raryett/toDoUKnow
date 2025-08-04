@@ -9,7 +9,7 @@ import java.util.Set;
 @Entity
 @Table(name="tag")
 
-public class TagModel {
+public class Tag {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +18,7 @@ public class TagModel {
     private String nome;
 
     @ManyToMany(mappedBy = "tags")
-    private Set<TarefaModel> tarefaModels;
+    private Set<Tarefa> tarefas;
 
 
 

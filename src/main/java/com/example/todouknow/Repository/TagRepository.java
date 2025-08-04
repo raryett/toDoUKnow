@@ -1,11 +1,11 @@
 package com.example.todouknow.Repository;
 
-import com.example.todouknow.Model.TagModel;
+import com.example.todouknow.Model.Tag;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface TagRepository extends JpaRepository<TagModel, Integer> {
+public interface TagRepository extends JpaRepository<Tag, Integer> {
 
 
 

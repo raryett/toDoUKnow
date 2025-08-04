@@ -1,8 +1,8 @@
 package com.example.todouknow.Model;
 
 
-import com.example.todouknow.Enums.PrioridadeTarefa;
-import com.example.todouknow.Enums.StatusTarefa;
+import com.example.todouknow.Model.Enums.PrioridadeTarefa;
+import com.example.todouknow.Model.Enums.StatusTarefa;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -13,7 +13,7 @@ import java.util.Set;
 @Entity
 @Table(name="tarefa")
 
-public class TarefaModel {
+public class Tarefa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,6 +38,6 @@ public class TarefaModel {
             joinColumns = @JoinColumn(name = "tarefa_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id")
     )
-    private Set<TagModel> tags;
+    private Set<Tag> tags;
 
 }

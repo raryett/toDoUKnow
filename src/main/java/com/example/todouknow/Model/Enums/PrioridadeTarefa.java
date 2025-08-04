@@ -1,4 +1,4 @@
-package com.example.todouknow.Enums;
+package com.example.todouknow.Model.Enums;
 
 public enum PrioridadeTarefa {
 
