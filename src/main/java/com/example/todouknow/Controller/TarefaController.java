@@ -2,7 +2,6 @@ package com.example.todouknow.Controller;
 
 
 import com.example.todouknow.Model.Tarefa;
-import com.example.todouknow.Repository.TarefaRepository;
 import com.example.todouknow.Service.TarefaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

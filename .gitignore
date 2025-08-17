@@ -31,3 +31,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Ignorar arquivos de ambiente e chaves de API
+/src/main/resources/application.properties
+.env
+*.env
